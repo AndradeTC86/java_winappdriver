@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.List;
 
 public class Calculator {
 
@@ -91,5 +92,24 @@ public class Calculator {
         WebDriverWait wait = new WebDriverWait(calcsession, Duration.ofSeconds(10));
         calcresult = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("CalculatorResults")));
         return calcresult.getText().replace("A exibição é", "").trim();
+    }
+
+    public void ChooseCalculator(String locator){
+        System.out.println("locator");
+        calcsession.findElement(AppiumBy.accessibilityId("TogglePaneButton")).click();
+        List<WebElement> calculators = calcsession.findElements(AppiumBy.className("Microsoft.UI.Xaml.Controls.NavigationViewItem"));
+        System.out.print(calculators.size());
+        for (int i=0; i<calculators.size(); i++){
+            if (calculators.get(i).getAttribute("Name").equals(locator)){
+                calculators.get(i).click();
+                break;
+            }
+        }
+    }
+
+    @Test
+    public void SelectAnotherCalculator(){
+        System.out.println("Selecting another Calculator");
+        ChooseCalculator("Científica Calculadora");
     }
 }
