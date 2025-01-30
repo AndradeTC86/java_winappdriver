@@ -99,9 +99,9 @@ public class Calculator {
         calcsession.findElement(AppiumBy.accessibilityId("TogglePaneButton")).click();
         List<WebElement> calculators = calcsession.findElements(AppiumBy.className("Microsoft.UI.Xaml.Controls.NavigationViewItem"));
         System.out.print(calculators.size());
-        for (int i=0; i<calculators.size(); i++){
-            if (calculators.get(i).getAttribute("Name").equals(locator)){
-                calculators.get(i).click();
+        for (WebElement calculator : calculators) {
+            if (calculator.getAttribute("Name").equals(locator)) {
+                calculator.click();
                 break;
             }
         }
