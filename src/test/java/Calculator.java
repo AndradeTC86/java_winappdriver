@@ -112,4 +112,35 @@ public class Calculator {
         System.out.println("Selecting another Calculator");
         ChooseCalculator("Científica Calculadora");
     }
+
+    public void ChooseCalculatorXpath(String locator){
+        System.out.println("locator");
+        calcsession.findElement(AppiumBy.accessibilityId("TogglePaneButton")).click();
+        List<WebElement> calculators = calcsession.findElements(AppiumBy.xpath("//ListItem"));
+        System.out.print(calculators.size());
+        for (WebElement calculator : calculators) {
+            if (calculator.getAttribute("Name").equals(locator)) {
+                calculator.click();
+                break;
+            }
+        }
+    }
+
+    @Test
+    public void SelectAnotherCalculatorXpath(){
+        System.out.println("Selecting another Calculator");
+        ChooseCalculatorXpath("Científica Calculadora");
+    }
+
+    public void ChooseCalculatorXpathSimple(String locator){
+        System.out.println("locator");
+        calcsession.findElement(AppiumBy.accessibilityId("TogglePaneButton")).click();
+        calcsession.findElement(AppiumBy.xpath("//ListItem[contains(@Name,\"" + locator + "\")]")).click();
+    }
+
+    @Test
+    public void SelectAnotherCalculatorXpathSimple(){
+        System.out.println("Selecting another Calculator");
+        ChooseCalculatorXpathSimple("Científica Calculadora");
+    }
 }
