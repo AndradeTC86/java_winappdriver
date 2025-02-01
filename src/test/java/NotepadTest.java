@@ -39,13 +39,12 @@ public class NotepadTest {
 
     @Test
     public void testNotepad() {
-        notepad.textEditor().sendKeys("Estudando automação de testes desktop com WinAppDriver");
-        Assert.assertEquals(notepad.textEditor().getText(), "Estudando automação de testes desktop com WinAppDriver");
+        notepad.textEditor().sendKeys("Test Automation with WinAppDriver");
+        Assert.assertEquals(notepad.textEditor().getText(), "Test Automation with WinAppDriver");
         notepad.textEditor().sendKeys(Keys.chord(Keys.CONTROL, "w"));
         notepad.dialogCancelButton().click();
-        Assert.assertEquals(notepad.textEditor().getText(), "Estudando automação de testes desktop com WinAppDriver");
+        Assert.assertEquals(notepad.textEditor().getText(), "Test Automation with WinAppDriver");
         notepad.textEditor().sendKeys(Keys.chord(Keys.CONTROL, "w"));
         notepad.dialogDontSaveButton().click();
-
     }
 }

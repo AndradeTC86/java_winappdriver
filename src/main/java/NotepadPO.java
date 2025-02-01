@@ -22,14 +22,6 @@ public class NotepadPO {
         return driver.findElement(AppiumBy.name("Fechar"));
     }
 
-    public WebElement closeGuideButton() {
-        return driver.findElement(AppiumBy.accessibilityId("CloseButton"));
-    }
-
-    public WebElement createNewGuideButton() {
-        return driver.findElement(AppiumBy.accessibilityId("AddButton"));
-    }
-
    public WebElement menuFile() {
         return driver.findElement(AppiumBy.accessibilityId("File"));
     }
