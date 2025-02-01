@@ -8,20 +8,19 @@ import java.net.URL;
 
 public class CalculatorTest {
 
-    private WindowsDriver calcsession = null;
+    private WindowsDriver calcSession = null;
     private CalculatorPO calc = null;
 
 
     @BeforeClass
     public void setUp(){
-        System.out.println("Opening the Calculator");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Windows");
         capabilities.setCapability("appium:deviceName", "WindowsPC");
         capabilities.setCapability("appium:app", "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App");
         try{
-            calcsession = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
-            calc = new CalculatorPO(calcsession);
+            calcSession = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
+            calc = new CalculatorPO(calcSession);
         } catch (MalformedURLException e){
             e.printStackTrace();
         } catch (Exception e) {
@@ -32,9 +31,8 @@ public class CalculatorTest {
 
     @AfterClass
     public void tearDown(){
-        System.out.println("Closing the Calculator");
-        if (calcsession != null) {
-            calcsession.quit();
+        if (calcSession != null) {
+            calcSession.quit();
         }
     }
 
